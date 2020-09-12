@@ -8,15 +8,13 @@ LIBS        = gtk+-3.0 x11 jansson
 CFLAGS      += `pkg-config --cflags $(LIBS)` -Wall -Wno-unused-parameter -std=gnu99
 LDLIBS      += `pkg-config --libs $(LIBS)`
 
-SHARE       = /usr/share
-
 ICON        = urn
 APP         = urn.desktop
 BIN_DIR     = ${PREFIX}/bin
-THEMES_DIR  = ${SHARE}/urn/themes
-APP_DIR     = ${SHARE}/applications
-ICON_DIR    = ${SHARE}/icons/hicolor
-SCHEMAS_DIR = ${SHARE}/glib-2.0/schemas
+THEMES_DIR  = ${PREFIX}/share/urn/themes
+APP_DIR     = ${PREFIX}/share/applications
+ICON_DIR    = ${PREFIX}/share/icons/hicolor
+SCHEMAS_DIR = ${PREFIX}/share/glib-2.0/schemas
 
 $(BIN): $(OBJS)
 
