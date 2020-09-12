@@ -34,7 +34,7 @@ install:
 	cp $(BIN) $(BIN_DIR)
 	cp $(APP) $(APP_DIR)
 	for size in 16 22 24 32 36 48 64 72 96 128 256 512; do \
-	  mkdir -p $(ICON_DIR)/"$$size"x"$$size"/apps ;
+	  mkdir -p $(ICON_DIR)/"$$size"x"$$size"/apps ; \
 	  convert $(ICON).svg -resize "$$size"x"$$size" \
 	          $(ICON_DIR)/"$$size"x"$$size"/apps/$(ICON).png ; \
 	done
