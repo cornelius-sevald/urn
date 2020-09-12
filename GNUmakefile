@@ -10,13 +10,13 @@ LDLIBS      += `pkg-config --libs $(LIBS)`
 
 SHARE       = /usr/share
 
-BIN_DIR     = ${PREFIX}/bin
-APP         = urn.desktop
-APP_DIR     = ${PREFIX}/applications
 ICON        = urn
-ICON_DIR    = ${PREFIX}/icons/hicolor
-SCHEMAS_DIR = ${PREFIX}/glib-2.0/schemas
-THEMES_DIR  = ${PREFIX}/urn/themes
+APP         = urn.desktop
+BIN_DIR     = ${PREFIX}/bin
+THEMES_DIR  = ${SHARE}/urn/themes
+APP_DIR     = ${SHARE}/applications
+ICON_DIR    = ${SHARE}/icons/hicolor
+SCHEMAS_DIR = ${SHARE}/glib-2.0/schemas
 
 $(BIN): $(OBJS)
 
@@ -26,15 +26,9 @@ urn-gtk.h: urn-gtk.css
 	xxd --include urn-gtk.css > urn-gtk.h || (rm urn-gtk.h; false)
 
 install:
-	mkdir -p $(BIN_DIR)
-	mkdir -p $(APP_DIR)
-	mkdir -p $(ICON_DIR)
-	mkdir -p $(SCHEMAS_DIR)
-	mkdir -p $(THEMES_DIR)
 	cp $(BIN) $(BIN_DIR)
 	cp $(APP) $(APP_DIR)
 	for size in 16 22 24 32 36 48 64 72 96 128 256 512; do \
-	  mkdir -p $(ICON_DIR)/"$$size"x"$$size"/apps ; \
 	  convert $(ICON).svg -resize "$$size"x"$$size" \
 	          $(ICON_DIR)/"$$size"x"$$size"/apps/$(ICON).png ; \
 	done
